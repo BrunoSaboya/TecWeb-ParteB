@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .models import Note
+from .models import Note, Tag
 
 
 def index(request):
@@ -11,7 +11,6 @@ def index(request):
         note.content = content
         note.save()
         return redirect('index')
-    
     else:
         all_notes = Note.objects.all()
         return render(request, 'notes/index.html', {'notes': all_notes})

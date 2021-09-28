@@ -5,8 +5,6 @@ function getRandomInt(min, max) {
 }
 
 document.addEventListener("DOMContentLoaded", function () {
-  // Faz textarea aumentar a altura automaticamente
-  // Fonte: https://www.geeksforgeeks.org/how-to-create-auto-resize-textarea-using-javascript-jquery/#:~:text=It%20can%20be%20achieved%20by,height%20of%20an%20element%20automatically.
   let textareas = document.getElementsByClassName("autoresize");
   for (let i = 0; i < textareas.length; i++) {
     let textarea = textareas[i];
@@ -29,14 +27,17 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 });
 
-window.onload = function() {
-  let id = document.getElementsByClassName("btn btn-info btn-lg");
-  let btn = document.getElementsByClassName("btn-ze")[0];
+function createCard() {
+  var popup = document.getElementById("form-container");
+  popup.classList.toggle("show");
+}
 
-  for (let i = 0; i < id.length; i++){
-    id[i].onclick=function(){
-      btn.formAction= "edit/" + id[i].value.toString();
-      console.log(btn.formAction);
-    };
-  };
-};
+// Update Post It
+const selectElement = document.querySelectorAll(".inputcard");
+
+selectElement.forEach((element) => {
+  element.addEventListener("input", (event) => {
+    const result = document.getElementById(element.getAttribute("key"));
+    result.style.display = "block";
+  });
+});
